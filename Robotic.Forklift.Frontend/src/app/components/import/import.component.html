@@ -1,0 +1,9 @@
+<h2>Import Forklifts</h2>
+
+<input type="file" (change)="pick($event)" class="form-control" />
+<button class="btn btn-primary mt-2" (click)="upload()" [disabled]="!file || uploading">
+  {{ uploading ? 'Uploading...' : 'Upload' }}
+</button>
+
+<div class="alert alert-success mt-3" *ngIf="ok">Imported.</div>
+<div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>

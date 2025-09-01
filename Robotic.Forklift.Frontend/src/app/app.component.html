@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="showNav()">
+  <a class="navbar-brand" routerLink="/forklifts">Robotic Forklift</a>
+  <ul class="navbar-nav me-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/forklifts" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Forklifts
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/import" routerLinkActive="active">Import</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/commands" routerLinkActive="active">Commands</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/logs" routerLinkActive="active">Logs</a>
+    </li>
+  </ul>
+
+  <button class="btn btn-outline-light ms-auto" (click)="logout()">Logout</button>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

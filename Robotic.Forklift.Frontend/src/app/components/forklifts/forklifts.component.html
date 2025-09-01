@@ -1,0 +1,17 @@
+<h4>Forklifts</h4>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th>ID</th><th>Name</th><th>Model</th><th>Manufactured</th></tr></thead>
+  <tbody>
+    <tr *ngFor="let f of rows">
+      <td>{{f.id}}</td>
+      <td>{{f.name}}</td>
+      <td>{{f.modelNumber}}</td>
+      <td>{{f.manufacturingDate | date:'yyyy-MM-dd'}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-between">
+  <div>Total: {{total}}</div>
+  <button class="btn btn-outline-secondary btn-sm" (click)="page=page-1; load()" [disabled]="page<=1">Prev</button>
+  <button class="btn btn-outline-secondary btn-sm" (click)="page=page+1; load()" [disabled]="rows.length<size">Next</button>
+</div>

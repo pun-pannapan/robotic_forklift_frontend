@@ -1,0 +1,42 @@
+<h2>Send Command</h2>
+
+<form class="row g-3" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="col-md-6">
+    <label class="form-label">Forklift</label>
+    <select class="form-select" formControlName="forkliftId">
+      <option value="" disabled>-- Select Forklift --</option>
+      <option *ngFor="let f of forklifts()" [value]="f.id">
+        {{ f.id }} - {{ f.name || 'Unnamed' }}
+      </option>
+    </select>
+    <div class="text-danger small" *ngIf="submitted && form.controls.forkliftId.invalid">
+      Please select a forklift
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Command</label>
+    <input class="form-control" formControlName="command" placeholder="e.g. MOVE_FORWARD 10" />
+    <div class="text-danger small" *ngIf="submitted && form.controls.command.invalid">
+      Command is required
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid || sending">
+      {{ sending ? 'Sending...' : 'Send' }}
+    </button>
+  </div>
+</form>
+
+<div class="mt-3" *ngIf="result.length">
+  <h5>Parsed Actions</h5>
+  <ul>
+    <li *ngFor="let a of result">
+      {{ a.action }} {{ a.value }} {{ a.unit }}
+    </li>
+  </ul>
+</div>
+
+<div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>
+<div class="alert alert-success mt-3" *ngIf="ok">Command sent.</div>
