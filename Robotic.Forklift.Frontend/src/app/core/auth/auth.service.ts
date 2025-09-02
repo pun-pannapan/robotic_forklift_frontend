@@ -16,7 +16,7 @@ export class AuthService {
   ) {}
 
   login(req: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.base}/api/Auth/login`, req).pipe(
+    return this.http.post<LoginResponse>(`${this.base}/Auth/login`, req).pipe(
       tap(res => {
         if (res?.token) {
           const expiresAt = (res as any).expiresAt;
