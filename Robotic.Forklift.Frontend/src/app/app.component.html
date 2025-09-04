@@ -1,23 +1,21 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="showNav()">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark px-3" *ngIf="showNav()">
   <a class="navbar-brand" routerLink="/forklifts">Robotic Forklift</a>
-  <ul class="navbar-nav me-auto">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/forklifts" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-        Forklifts
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/import" routerLinkActive="active">Import</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/commands" routerLinkActive="active">Commands</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/logs" routerLinkActive="active">Logs</a>
-    </li>
-  </ul>
-
-  <button class="btn btn-outline-light ms-auto" (click)="logout()">Logout</button>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="mainNav">
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/forklifts" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          Forklifts
+        </a>
+      </li>
+      <li class="nav-item"><a class="nav-link" routerLink="/import" routerLinkActive="active">Import</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/commands" routerLinkActive="active">Commands</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/logs" routerLinkActive="active">Logs</a></li>
+    </ul>
+    <button class="btn btn-outline-light ms-md-auto mt-2 mt-md-0" (click)="logout()">Logout</button>
+  </div>
 </nav>
 
 <div class="container mt-4">
