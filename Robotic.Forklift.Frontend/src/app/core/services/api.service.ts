@@ -20,8 +20,11 @@ export class ApiService {
     return token ? new HttpHeaders({ Authorization: `Bearer ${token}` }) : new HttpHeaders();
   }
 
-  getForklifts(page = 1, size = 1000): Observable<PagedResult<ForkliftDto>> {
-    const params = new HttpParams().set('page', page).set('size', size);
+  getForklifts(page = 1, size = 1000, search?: string): Observable<PagedResult<ForkliftDto>> {
+    let params = new HttpParams().set('page', page).set('size', size);
+     if (search && search.trim().length > 0) {
+        params = params.set('search', search.trim());
+      }
     return this.http.get<PagedResult<ForkliftDto>>(`${this.api_base}/Forklifts`, {
       params,
       headers: this.authHeaders(),

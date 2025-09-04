@@ -1,4 +1,16 @@
 <h4>Forklifts</h4>
+
+<form class="row g-2 mb-3" (ngSubmit)="onSearch()">
+  <div class="col-md-6">
+    <input class="form-control" type="text" placeholder="Search"
+           [(ngModel)]="search" name="search" />
+  </div>
+  <div class="col-auto d-flex gap-2">
+    <button class="btn btn-primary" type="submit" [disabled]="loading">Search</button>
+    <button class="btn btn-outline-secondary" type="button" (click)="clearSearch()" [disabled]="loading">Clear</button>
+  </div>
+</form>
+
 <table class="table table-sm table-striped table-hover align-middle">
   <thead><tr><th>ID</th><th>Name</th><th>Model</th><th>Manufactured</th></tr></thead>
   <tbody>
